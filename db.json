@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "email": "erica@gmail.com",
+      "password": "$2a$10$g69wSyvlQO2f7yk735x04.yQ5s.ZstPFYqTqKpTPjKnJxVyIH4ze6",
+      "nome": "Erica",
+      "cognome": "Diana",
+      "id": 1
+    }
+  ]
+}

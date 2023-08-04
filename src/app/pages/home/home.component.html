@@ -1,0 +1,107 @@
+<h1 class="text-center">Weather.com</h1>
+<h2 class="text-center">Inserisci latitudine e longitudine</h2>
+<form class="d-flex mt-3 bg-dark p-3" role="search">
+  <input
+    class="form-control me-2"
+    type="number"
+    placeholder="Inserisci longitudine"
+    aria-label="Search"
+    name="lat"
+    [(ngModel)]="dato.lat"
+  />
+  <input
+    class="form-control me-2"
+    type="number"
+    placeholder="Inserisci latitudine"
+    aria-label="Search"
+    name="lon"
+    [(ngModel)]="dato.lon"
+  />
+  <button class="btn btn-outline-success" (click)="dati()" type="text">
+    Search
+  </button>
+</form>
+<div class="d-flex justify-content-center">
+  <div class="card mt-4 bg-dark p-3 text-white" *ngIf="meteo">
+    <img
+      [src]="'https://openweathermap.org/img/wn/'+meteo.weather[0].icon +'@2x.png'"
+      class="card-img-top w-25 border border-dark rounded-5"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">
+        {{meteo.name}}({{meteo.sys.country}})
+      </h5>
+      <p class="card-text">
+        {{meteo.weather[0].main}}: {{meteo.weather[0].description}}<br />
+        Velocità vento: {{meteo.wind.speed}}km/h <br />
+        Raffiche di vento: {{meteo.wind.gust}}km/h
+      </p>
+      <p class="card-text">
+        Umidità: {{meteo.main.humidity}}% <br />
+        Visibilità: {{meteo.visibility}}m <br />
+        Pressione:{{meteo.main.pressure}}HPa <br />
+        Temperatura percepita: {{meteo.main.feels_like}}
+      </p>
+    </div>
+  </div>
+</div>
+
+<h2 class="text-center">Inserisci la tua città</h2>
+<form class="d-flex flex-column mt-3 bg-dark-subtle p-1">
+  <input
+    class="form-control m-2"
+    type="text"
+    placeholder="Cerca città"
+    aria-label="Search"
+    name="city"
+    [(ngModel)]="listcity.city"
+  />
+
+  <input
+    class="form-control m-2"
+    type="text"
+    placeholder="Inserisci codice stato"
+    aria-label="Search"
+    name="città"
+    [(ngModel)]="listcity.statecode"
+  />
+  <input
+    class="form-control m-2"
+    type="number"
+    placeholder="Inserisci prefisso internazionale"
+    aria-label="Search"
+    name="città"
+    [(ngModel)]="listcity.countrycode"
+  />
+
+  <button class="btn btn-outline-success" (click)="city()" type="text">
+    Search
+  </button>
+</form>
+
+<div class="d-flex justify-content-center">
+  <div class="card mt-4 bg-dark p-3 text-white" *ngIf="meteoCity">
+    <img
+      [src]="'https://openweathermap.org/img/wn/'+meteo.weather[0].icon +'@2x.png'"
+      class="card-img-top w-25 border border-dark rounded-5"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">
+        {{meteoCity.name}}({{meteoCity.sys.country}})
+      </h5>
+      <p class="card-text">
+        {{meteoCity.weather[0].main}}: {{meteoCity.weather[0].description}}<br />
+        Velocità vento: {{meteoCity.wind.speed}}km/h <br />
+        Raffiche di vento: {{meteoCity.wind.gust}}km/h
+      </p>
+      <p class="card-text">
+        Umidità: {{meteoCity.main.humidity}}% <br />
+        Visibilità: {{meteoCity.visibility}}m <br />
+        Pressione:{{meteoCity.main.pressure}}HPa <br />
+        Temperatura percepita: {{meteoCity.main.feels_like}}
+      </p>
+    </div>
+  </div>
+</div>

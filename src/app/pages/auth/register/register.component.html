@@ -1,0 +1,66 @@
+<h1 class="text-center mt-3">Registrati</h1>
+<form
+  class="d-flex flex-column justify-content-center border border-secondary p-3 bg-info-subtle m-5"
+>
+  <input
+    #nome="ngModel"
+    type="text"
+    class="m-1"
+    [(ngModel)]="formData.nome"
+    name="name"
+    placeholder="Inserisci il tuo nome"
+    required
+  />
+  <span *ngIf="nome.invalid && nome.touched" class="text-danger m-1"
+    >Inserisci il nome</span
+  >
+
+  <input
+    #cognome="ngModel"
+    type="text"
+    class="m-1"
+    [(ngModel)]="formData.cognome"
+    name="cognome"
+    required
+    placeholder="Inserisci il tuo cognome"
+  />
+  <span *ngIf="cognome.invalid && cognome.touched" class="m-1 text-danger"
+    >Inserisci il cognome</span
+  >
+
+  <input
+    #email="ngModel"
+    type="email"
+    class="m-1"
+    [(ngModel)]="formData.email"
+    name="email"
+    required
+    placeholder="Inserisci la tua email"
+  />
+  <span *ngIf="email.invalid && email.touched" class="text-danger m-1"
+    >Inserisci email</span
+  >
+
+  <input
+    #password="ngModel"
+    type="password"
+    class="m-1"
+    required
+    [(ngModel)]="formData.password"
+    name="password"
+    placeholder="Inserisci  password"
+  />
+  <span *ngIf="password.invalid && password.touched" class="text-danger m-1"
+    >Inserisci password</span
+  >
+
+  <button class="btn btn-success" (click)="register()">
+    Registrati
+  </button>
+</form>
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <h5>Sei gia registrato?</h5>
+  <button class="btn btn-primary" routerLink="/auth/login">
+    Accedi
+  </button>
+</div>
