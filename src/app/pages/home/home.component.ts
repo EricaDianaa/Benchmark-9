@@ -14,6 +14,7 @@ export class HomeComponent {
     lat: 0,
     lon: 0,
   };
+
   listcity: List = {
     city: "",
     statecode: "",
@@ -24,7 +25,7 @@ export class HomeComponent {
   meteoCity!: GeneralMeteo;
   citys: any[] = [];
   constructor(private privateSvc: MeteoService) {}
-
+  //richiamo chiamate http service
   dati() {
     this.privateSvc.get(this.dato).subscribe((res) => {
       this.meteo = res;
