@@ -27,11 +27,11 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
     console.log(this.isLoggedIn$);
   }
-
+  //registrazione
   signUp(data: IRegister) {
     return this.http.post<IAccessData>(this.registerUrl, data);
   }
-
+  //login
   login(data: ILogin) {
     return this.http.post<IAccessData>(this.loginUrl, data).pipe(
       tap((data) => {
@@ -65,9 +65,5 @@ export class AuthService {
     const accessData: IAccessData = JSON.parse(userJson);
     if (this.jwtHelper.isTokenExpired(accessData.accessToken)) return;
     this.authSubject.next(accessData);
-  }
-
-  datiUser() {
-    return this.http.get<IUser[]>("http://localhost:3000/users");
   }
 }

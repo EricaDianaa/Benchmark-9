@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { MeteoService } from "src/app/Service/meteo.service";
-import { GeneralMeteo } from "src/app/interfaceMeteo/general-meteo";
+import { GeneralMeteo, IGeneral } from "src/app/interfaceMeteo/general-meteo";
 import { List } from "src/app/interfaceMeteo/list";
 import { Meteo } from "src/app/interfaceMeteo/meteo";
 
@@ -20,9 +20,9 @@ export class HomeComponent {
     statecode: "",
     countrycode: 0,
   };
-
-  meteo!: GeneralMeteo;
-  meteoCity!: GeneralMeteo;
+  m!: any;
+  meteo!: IGeneral;
+  meteoCity!: IGeneral;
   citys: any[] = [];
   constructor(private privateSvc: MeteoService) {}
   //richiamo chiamate http service
@@ -42,6 +42,8 @@ export class HomeComponent {
       .subscribe((res) => {
         console.log(res);
         // this.meteoCity=res
+        this.meteoCity = res;
+        console.log(this.m);
       });
     console.log(this.listcity.city);
     console.log(this.listcity.statecode);

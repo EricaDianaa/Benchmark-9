@@ -1,20 +1,26 @@
+import { City } from "./city";
 import { Main } from "./main";
 import { Syn } from "./syn";
 import { Weather } from "./weather";
 import { Wind } from "./wind";
 
 export interface GeneralMeteo {
-  base: string;
   clouds: {};
-  cod: number;
-  coord: {};
   dt: number;
+  dt_txt: string;
   id: number;
   main: Main;
-  name: string;
+  pop: number;
   sys: Syn;
-  timezone: number;
   visibility: number;
   weather: Weather[];
   wind: Wind;
+}
+
+export interface IGeneral {
+  city: City;
+  cnt: number;
+  cod: string;
+  list: GeneralMeteo[];
+  message: number;
 }
