@@ -1,48 +1,85 @@
-<!-- <form class="d-flex flex-column mt-3">
-  <input
-    class="form-control me-2"
-    type="text"
-    placeholder="Cerca città"
-    aria-label="Search"
-    name="city"
-    [(ngModel)]="listcity.city"
-  />
+<div id="container" class="container h-100 w-100">
+  <h1 class="text-center mt-2 text-white">
+    Cerca una città nuova o una recente
+  </h1>
 
-  <input
-    class="form-control me-2"
-    type="text"
-    placeholder="Inserisci codice stato"
-    aria-label="Search"
-    name="città"
-    [(ngModel)]="listcity.statecode"
-  />
-  <input
-    class="form-control me-2"
-    type="number"
-    placeholder="Inserisci prefisso internazionale"
-    aria-label="Search"
-    name="città"
-    [(ngModel)]="listcity.countrycode"
-  />
+  <form class="d-flex flex-column m-5 bg-dark-subtle p-5">
+    <input
+      class="form-control m-2"
+      type="text"
+      placeholder="Cerca città"
+      aria-label="Search"
+      name="city"
+      [(ngModel)]="listcity.city"
+    />
 
-  <button class="btn btn-outline-success" (click)="city()" type="text">
-    Search
-  </button>
-</form>
+    <input
+      class="form-control m-2"
+      type="text"
+      placeholder="Inserisci codice stato"
+      aria-label="Search"
+      name="città"
+      [(ngModel)]="listcity.statecode"
+    />
+    <input
+      class="form-control m-2"
+      type="number"
+      placeholder="Inserisci prefisso internazionale"
+      aria-label="Search"
+      name="città"
+      [(ngModel)]="listcity.countrycode"
+    />
+    <div>
+      <button
+        class="btn btn-outline-success w-50"
+        (click)="coordinate()"
+        type="text"
+      >
+        Search
+      </button>
+      <button
+        class="btn btn-outline-primary w-50"
+        type="text"
+        (click)="addToPrefe()"
+      >
+        Aggiungi ai preferiti
+      </button>
+    </div>
+  </form>
 
-<div class="card-body">
-  <h5 class="card-title">
-    {{meteoCity.name}}({{meteoCity.sys.country}})
-  </h5>
-  <p class="card-text">
-    {{meteoCity.weather[0].main}}: {{meteoCity.weather[0].description}}<br />
-    Velocità vento: {{meteoCity.wind.speed}}km/h <br />
-    Raffiche di vento: {{meteoCity.wind.gust}}km/h
-  </p>
-  <p class="card-text">
-    Umidità: {{meteoCity.main.humidity}}% <br />
-    Visibilità: {{meteoCity.visibility}}m <br />
-    Pressione:{{meteoCity.main.pressure}}HPa <br />
-    Temperatura percepita: {{meteoCity.main.feels_like}}
-  </p>
-</div> -->
+  <h2 class="text-center">Preferiti</h2>
+  <div class="px-5">
+    <button class="btn btn-primary w-100" type="text" (click)="showPrefe()">
+      Mostra preferito
+    </button>
+  </div>
+  <div
+    class="card mt-4 bg-dark-subtle p-3 text-dark w-50 border border-white mx-auto"
+    *ngIf="favoriteCity"
+  >
+    <img
+      [src]="'https://openweathermap.org/img/wn/'+favoriteCity.list[0].weather[0].icon +'@2x.png'"
+      class="card-img-top w-25 rounded-5"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">
+        {{favoriteCity.city.name}}({{favoriteCity.city.country}})
+      </h5>
+      <p class="card-text">
+        Data e ora: {{favoriteCity.list[0].dt_txt}} <br />
+        {{favoriteCity.list[0].weather[0].main}}:
+        {{favoriteCity.list[0].weather[0].description}}<br />
+        Velocità vento: {{favoriteCity.list[0].wind.speed}}km/h <br />
+        Raffiche di vento: {{favoriteCity.list[0].wind.gust}}km/h
+      </p>
+      <p class="card-text">
+        Umidità: {{favoriteCity.list[0].main.humidity}}% <br />
+        Visibilità: {{favoriteCity.list[0].visibility}}m <br />
+        Pressione: {{favoriteCity.list[0].main.pressure}}HPa <br />
+        Temperatura percepita:
+        {{(favoriteCity.list[0].main.feels_like/10).toFixed(0)}}°
+      </p>
+    </div>
+  </div>
+</div>
